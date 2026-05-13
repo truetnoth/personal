@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Немного философии.md",
+                "file": "резюме.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Немного философии"
+              "title": "резюме"
             }
           }
         ]
@@ -185,9 +185,11 @@
   },
   "active": "2cd1b1af02aa6692",
   "lastOpenFiles": [
+    "Немного философии.md",
+    "резюме.md",
+    "Clippings",
     "bez-huyni.md",
     "welcome.md",
-    "Заголовок.md",
-    "Немного философии.md"
+    "Заголовок.md"
   ]
 }

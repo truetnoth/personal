@@ -7,11 +7,11 @@ layout: default
 
   {% assign tags = posts | writing_tags %}
   {% if tags.size > 0 %}
-    <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Темы</a></p>
+    <p><a class="muted plain font-ui" href="{{ '/topics/' | relative_url }}">Темы</a></p>
     <p class="topic-list">
       {% for tag in tags %}
         {% assign tag_slug = tag | slugify %}
-        <a href="{{ '/writing/' | append: '#' | append: tag_slug | relative_url }}">{{ tag }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
+        <a href="{{ '/topics/' | append: '#' | append: tag_slug | relative_url }}">{{ tag }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
       {% endfor %}
     </p>
 

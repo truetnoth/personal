@@ -1,5 +1,5 @@
 ---
-title: Writing
+title: Пишу
 permalink: /writing/
 ---
 

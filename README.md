@@ -14,7 +14,18 @@ Open `http://127.0.0.1:4000/`.
 ## Writing
 
 - Edit the repository as an Obsidian vault.
-- Put blog posts in `_posts` using the `YYYY-MM-DD-title.md` filename format.
-- Put evergreen notes in `_notes`.
-- Use `[[note-name]]` or `[[note-name|link text]]` for internal Obsidian-style links.
-- Use standard Markdown front matter for titles, dates, tags, and descriptions.
+- Put posts in `_writing`.
+- File names can be simple Obsidian note names; the public address comes from the `url` field.
+- Use this front matter:
+
+```yaml
+---
+title: Post title
+date: 2026-05-13
+tag: topic
+url: post-url
+---
+```
+
+- `url: post-url` publishes the post at `https://truetnoth.com/post-url/`.
+- Use `[[post-url]]` or `[[Post title|link text]]` for internal Obsidian-style links.

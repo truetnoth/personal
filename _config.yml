@@ -1,5 +1,5 @@
 title: "Валера Трусевич"
-description: "Personal notes, essays, and technical writing."
+description: "Personal essays and technical writing."
 url: "https://truetnoth.com"
 baseurl: ""
 lang: "ru"
@@ -11,17 +11,14 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-permalink: /blog/:year/:month/:day/:title/
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
 collections:
-  notes:
+  writing:
     output: true
-    permalink: /notes/:name/
 
 defaults:
   - scope:
@@ -30,14 +27,9 @@ defaults:
       layout: "page"
   - scope:
       path: ""
-      type: "posts"
+      type: "writing"
     values:
       layout: "post"
-  - scope:
-      path: ""
-      type: "notes"
-    values:
-      layout: "note"
 
 exclude:
   - Gemfile

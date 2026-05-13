@@ -32,7 +32,7 @@ module ObsidianWikilinks
 
   def resolve_url(index, path, site)
     key = normalize_key(path)
-    index[key] || "#{site.config['baseurl']}/notes/#{Jekyll::Utils.slugify(path)}/"
+    index[key] || "#{site.config['baseurl']}/#{Jekyll::Utils.slugify(path)}/"
   end
 
   def link_index(site)

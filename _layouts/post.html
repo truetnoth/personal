@@ -4,21 +4,16 @@ layout: default
 
 <article class="post">
   <header class="page-header">
-    <p class="meta">{{ page.date | date: "%Y-%m-%d" }}</p>
+    <p class="meta">{{ page.date | ru_date }}</p>
     <h1>{{ page.title | escape }}</h1>
-    {% if page.description %}
-      <p class="description">{{ page.description }}</p>
-    {% endif %}
   </header>
   <div class="content">
     {{ content }}
   </div>
-  {% if page.tags and page.tags.size > 0 %}
+  {% if page.tag %}
+    {% assign tag_slug = page.tag | slugify %}
     <footer class="tags" aria-label="Tags">
-      {% for tag in page.tags %}
-        <span>{{ tag }}</span>
-      {% endfor %}
+      <a href="{{ '/writing/' | append: '#' | append: tag_slug | relative_url }}">{{ page.tag }}</a>
     </footer>
   {% endif %}
 </article>
-

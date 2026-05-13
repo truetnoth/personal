@@ -3,7 +3,8 @@ layout: default
 ---
 
 <div class="home-wrap">
-  {% assign latest = site.posts | first %}
+  {% assign posts = site.writing | sort: "date" | reverse %}
+  {% assign latest = posts | first %}
   {% if latest %}
     <p><a class="muted plain font-ui" href="{{ latest.url | relative_url }}">Latest</a></p>
 
@@ -11,57 +12,39 @@ layout: default
       <a class="plain" href="{{ latest.url | relative_url }}">
         <h2>{{ latest.title | escape }}</h2>
         <div class="metadata muted small font-ui">
-          <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%B %-d, %Y" }}</time>
+          <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | ru_date }}</time>
         </div>
-        {% if latest.description %}
-          <p class="small muted">{{ latest.description }} <span aria-hidden="true">Keep reading -></span></p>
-        {% endif %}
+        <p class="small muted">Читать дальше -></p>
       </a>
     </article>
 
     <hr class="section-rule">
   {% endif %}
 
-  {% assign tags = site.tags | sort %}
+  {% assign tags = posts | map: "tag" | compact | uniq | sort %}
   {% if tags.size > 0 %}
-    <p><a class="muted plain font-ui" href="{{ '/archive/' | relative_url }}">Topics</a></p>
+    <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Topics</a></p>
     <p class="topic-list">
       {% for tag in tags %}
-        <a href="{{ '/archive/' | relative_url }}#{{ tag[0] | slugify }}">{{ tag[0] }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
+        {% assign tag_slug = tag | slugify %}
+        <a href="{{ '/writing/' | append: '#' | append: tag_slug | relative_url }}">{{ tag }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
       {% endfor %}
     </p>
 
     <hr class="section-rule">
   {% endif %}
 
-  <p><a class="muted plain font-ui" href="{{ '/archive/' | relative_url }}">Writing</a></p>
+  <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Writing</a></p>
   <ul class="index-list">
-    {% for post in site.posts %}
+    {% for post in posts %}
       <li>
         <a class="plain" href="{{ post.url | relative_url }}">
-          <span class="index-date muted small font-ui">{{ post.date | date: "%Y · %m" }}</span>
+          <span class="index-date muted small font-ui">{{ post.date | ru_date }}</span>
           <span class="index-title">{{ post.title | escape }}</span>
         </a>
       </li>
     {% endfor %}
   </ul>
-
-  {% assign notes = site.notes | sort: "title" %}
-  {% if notes.size > 0 %}
-    <hr class="section-rule">
-
-    <p><a class="muted plain font-ui" href="{{ '/notes/' | relative_url }}">Notes</a></p>
-    <ul class="index-list">
-      {% for note in notes %}
-        <li>
-          <a class="plain" href="{{ note.url | relative_url }}">
-            <span class="index-date muted small font-ui">note</span>
-            <span class="index-title">{{ note.title | default: note.name | escape }}</span>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
 
   {% assign intro = content | strip_html | strip %}
   {% if intro != "" %}

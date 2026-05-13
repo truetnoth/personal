@@ -270,6 +270,11 @@ h3 {
   font-variant-numeric: tabular-nums;
 }
 
+.content .index-list {
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
 .index-list li {
   margin: 0;
   padding: 0;
@@ -381,12 +386,19 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.tags span {
+.tags span,
+.tags a {
   padding: 0.1rem 0.55rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--muted);
   font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.tags a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .site-footer {

@@ -1,0 +1,49 @@
+---
+title: Writing
+permalink: /writing/
+---
+
+{% assign posts = site.writing | sort: "date" | reverse %}
+{% assign tags = posts | map: "tag" | compact | uniq | sort %}
+
+{% if tags.size > 0 %}
+## Topics
+
+{% for tag in tags %}
+[{{ tag }}](#{{ tag | slugify }}){% unless forloop.last %}, {% endunless %}
+{% endfor %}
+{% endif %}
+
+## Writing
+
+<ul class="index-list">
+{% for post in posts %}
+  <li>
+    <a class="plain" href="{{ post.url | relative_url }}">
+      <span class="index-date muted small font-ui">{{ post.date | ru_date }}</span>
+      <span class="index-title">{{ post.title | escape }}</span>
+    </a>
+  </li>
+{% endfor %}
+</ul>
+
+{% if tags.size > 0 %}
+## By Topic
+
+{% for tag in tags %}
+### {{ tag }}
+{: #{{ tag | slugify }} }
+
+<ul class="index-list">
+{% assign tagged_posts = posts | where: "tag", tag %}
+{% for post in tagged_posts %}
+  <li>
+    <a class="plain" href="{{ post.url | relative_url }}">
+      <span class="index-date muted small font-ui">{{ post.date | ru_date }}</span>
+      <span class="index-title">{{ post.title | escape }}</span>
+    </a>
+  </li>
+{% endfor %}
+</ul>
+{% endfor %}
+{% endif %}

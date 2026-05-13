@@ -1,5 +1,5 @@
 ---
-title: Notes
+title: Заметки
 permalink: /notes/
 ---
 

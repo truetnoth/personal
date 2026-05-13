@@ -1,5 +1,5 @@
 ---
-title: About
+title: Обо мне
 permalink: /about/
 ---
 

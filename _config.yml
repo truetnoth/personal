@@ -1,7 +1,7 @@
 title: "truetnoth"
 description: "Personal notes, essays, and technical writing."
-url: "https://truetnoth.github.io"
-baseurl: "/personal"
+url: "https://truetnoth.com"
+baseurl: ""
 lang: "ru"
 timezone: "Europe/Moscow"
 
@@ -44,4 +44,3 @@ exclude:
   - Gemfile.lock
   - README.md
   - vendor
-

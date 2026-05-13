@@ -9,7 +9,7 @@ bundle install
 bundle exec jekyll serve --livereload
 ```
 
-Open `http://127.0.0.1:4000/personal/`.
+Open `http://127.0.0.1:4000/`.
 
 ## Writing
 
@@ -18,4 +18,3 @@ Open `http://127.0.0.1:4000/personal/`.
 - Put evergreen notes in `_notes`.
 - Use `[[note-name]]` or `[[note-name|link text]]` for internal Obsidian-style links.
 - Use standard Markdown front matter for titles, dates, tags, and descriptions.
-

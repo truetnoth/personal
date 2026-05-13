@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pages/archive.md",
+                "file": "pages/notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "archive"
+              "title": "notes"
             }
           }
         ],
@@ -200,8 +200,8 @@
   },
   "active": "dcbe6f23a36147c3",
   "lastOpenFiles": [
-    "pages/notes.md",
     "pages/archive.md",
+    "pages/notes.md",
     "_posts/2026-05-13-welcome.md",
     "_posts/Без хуйни.md",
     "index.md",

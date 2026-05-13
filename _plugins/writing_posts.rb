@@ -57,6 +57,7 @@ class WritingTopicPage < Jekyll::Page
     @dir = WritingPosts.topic_path(tag).sub(%r{\A/}, "").sub(%r{/\z}, "")
     @name = "index.html"
     @content = ""
+    @data = {}
 
     process(@name)
 

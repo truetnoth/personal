@@ -23,7 +23,7 @@ layout: default
 
   {% assign tags = posts | writing_tags %}
   {% if tags.size > 0 %}
-    <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Topics</a></p>
+    <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Темы</a></p>
     <p class="topic-list">
       {% for tag in tags %}
         {% assign tag_slug = tag | slugify %}

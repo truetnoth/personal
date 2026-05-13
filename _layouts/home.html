@@ -4,22 +4,6 @@ layout: default
 
 <div class="home-wrap">
   {% assign posts = site.writing | sort: "date" | reverse %}
-  {% assign latest = posts | first %}
-  {% if latest %}
-    <p><a class="muted plain font-ui" href="{{ latest.url | relative_url }}">Свежее</a></p>
-
-    <article class="latest-entry">
-      <a class="plain" href="{{ latest.url | relative_url }}">
-        <h2>{{ latest.title | escape }}</h2>
-        <div class="metadata muted small font-ui">
-          <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | ru_date }}</time>
-        </div>
-        <p class="small muted">Читать дальше -></p>
-      </a>
-    </article>
-
-    <hr class="section-rule">
-  {% endif %}
 
   {% assign tags = posts | writing_tags %}
   {% if tags.size > 0 %}

@@ -6,7 +6,7 @@ layout: default
   {% assign posts = site.writing | sort: "date" | reverse %}
   {% assign latest = posts | first %}
   {% if latest %}
-    <p><a class="muted plain font-ui" href="{{ latest.url | relative_url }}">Latest</a></p>
+    <p><a class="muted plain font-ui" href="{{ latest.url | relative_url }}">Свежее</a></p>
 
     <article class="latest-entry">
       <a class="plain" href="{{ latest.url | relative_url }}">
@@ -34,7 +34,7 @@ layout: default
     <hr class="section-rule">
   {% endif %}
 
-  <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Writing</a></p>
+  <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Пишу</a></p>
   <ul class="index-list">
     {% for post in posts %}
       <li>

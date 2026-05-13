@@ -4,7 +4,7 @@ permalink: /writing/
 ---
 
 {% assign posts = site.writing | sort: "date" | reverse %}
-{% assign tags = posts | map: "tag" | compact | uniq | sort %}
+{% assign tags = posts | writing_tags %}
 
 {% if tags.size > 0 %}
 ## Topics
@@ -35,7 +35,7 @@ permalink: /writing/
 {: #{{ tag | slugify }} }
 
 <ul class="index-list">
-{% assign tagged_posts = posts | where: "tag", tag %}
+{% assign tagged_posts = posts | where_writing_tag: tag %}
 {% for post in tagged_posts %}
   <li>
     <a class="plain" href="{{ post.url | relative_url }}">

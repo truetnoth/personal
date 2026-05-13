@@ -22,10 +22,13 @@ Open `http://127.0.0.1:4000/`.
 ---
 title: Post title
 date: 2026-05-13
-tag: topic
+tags:
+  - topic
+  - another-topic
 url: post-url
 ---
 ```
 
 - `url: post-url` publishes the post at `https://truetnoth.com/post-url/`.
+- `tags` can contain one or more topics. For a single topic, `tag: topic` still works.
 - Use `[[post-url]]` or `[[Post title|link text]]` for internal Obsidian-style links.

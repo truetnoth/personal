@@ -21,7 +21,7 @@ layout: default
     <hr class="section-rule">
   {% endif %}
 
-  {% assign tags = posts | map: "tag" | compact | uniq | sort %}
+  {% assign tags = posts | writing_tags %}
   {% if tags.size > 0 %}
     <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Topics</a></p>
     <p class="topic-list">

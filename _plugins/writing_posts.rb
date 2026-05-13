@@ -12,10 +12,19 @@ module WritingPosts
   end
 
   def normalize_tag(document)
-    tag = document.data["tag"]
-    return if tag.nil? || tag.to_s.strip.empty?
+    tags = normalized_tags(document.data["tags"])
+    tags = normalized_tags(document.data["tag"]) if tags.empty?
 
-    document.data["tags"] = [tag.to_s.strip]
+    document.data["tags"] = tags
+    document.data["tag"] = tags.first
+  end
+
+  def normalized_tags(value)
+    Array(value)
+      .flat_map { |item| item.to_s.split(",") }
+      .map(&:strip)
+      .reject(&:empty?)
+      .uniq
   end
 
   def apply_permalink(document)
@@ -33,6 +42,26 @@ module WritingPosts
     document.data["permalink"] = "/#{slug}/"
   end
 end
+
+module WritingTagFilters
+  def writing_tags(posts)
+    Array(posts)
+      .flat_map { |post| Array(post.data["tags"]) }
+      .map(&:to_s)
+      .map(&:strip)
+      .reject(&:empty?)
+      .uniq
+      .sort
+  end
+
+  def where_writing_tag(posts, tag)
+    Array(posts).select do |post|
+      Array(post.data["tags"]).map(&:to_s).include?(tag.to_s)
+    end
+  end
+end
+
+Liquid::Template.register_filter(WritingTagFilters)
 
 class WritingPostsGenerator < Jekyll::Generator
   priority :highest

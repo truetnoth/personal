@@ -10,10 +10,12 @@ layout: default
   <div class="content">
     {{ content }}
   </div>
-  {% if page.tag %}
-    {% assign tag_slug = page.tag | slugify %}
+  {% if page.tags and page.tags.size > 0 %}
     <footer class="tags" aria-label="Tags">
-      <a href="{{ '/writing/' | append: '#' | append: tag_slug | relative_url }}">{{ page.tag }}</a>
+      {% for tag in page.tags %}
+        {% assign tag_slug = tag | slugify %}
+        <a href="{{ '/writing/' | append: '#' | append: tag_slug | relative_url }}">{{ tag }}</a>
+      {% endfor %}
     </footer>
   {% endif %}
 </article>

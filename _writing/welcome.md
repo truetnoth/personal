@@ -1,7 +1,9 @@
 ---
 title: Первый пост
 date: 2026-05-13
-tag: site
+tags:
+  - site
+  - jekyll
 url: welcome
 ---
 Это стартовая запись блога.
@@ -9,4 +11,3 @@ url: welcome
 Можно писать посты в Obsidian, хранить их в `_writing`, связывать через `[[welcome]]` и публиковать через GitHub Pages.
 
 Внешние ссылки, например [Jekyll](https://jekyllrb.com/), открываются в новой вкладке.
-

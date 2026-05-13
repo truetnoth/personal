@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<article class="note">
+  <header class="page-header">
+    <p class="meta">Note</p>
+    <h1>{{ page.title | escape }}</h1>
+  </header>
+  <div class="content">
+    {{ content }}
+  </div>
+  {% if page.tags and page.tags.size > 0 %}
+    <footer class="tags" aria-label="Tags">
+      {% for tag in page.tags %}
+        <span>{{ tag }}</span>
+      {% endfor %}
+    </footer>
+  {% endif %}
+</article>
+

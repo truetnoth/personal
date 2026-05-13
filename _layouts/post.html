@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="page-header">
+    <p class="meta">{{ page.date | date: "%Y-%m-%d" }}</p>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}
+      <p class="description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+  <div class="content">
+    {{ content }}
+  </div>
+  {% if page.tags and page.tags.size > 0 %}
+    <footer class="tags" aria-label="Tags">
+      {% for tag in page.tags %}
+        <span>{{ tag }}</span>
+      {% endfor %}
+    </footer>
+  {% endif %}
+</article>
+

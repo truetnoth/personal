@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<section class="intro">
+  <p class="eyebrow">Personal site</p>
+  <h1>{{ site.title | escape }}</h1>
+  <p>{{ content | strip_html | strip }}</p>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>Latest Posts</h2>
+    <a href="{{ '/archive/' | relative_url }}">All posts</a>
+  </div>
+  <div class="post-list">
+    {% for post in site.posts limit: 5 %}
+      <article class="list-item">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p class="meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+        {% if post.description %}
+          <p>{{ post.description }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>Notes</h2>
+    <a href="{{ '/notes/' | relative_url }}">All notes</a>
+  </div>
+  <div class="post-list">
+    {% assign notes = site.notes | sort: "title" %}
+    {% for note in notes limit: 5 %}
+      <article class="list-item">
+        <h3><a href="{{ note.url | relative_url }}">{{ note.title | default: note.name | escape }}</a></h3>
+        {% if note.description %}
+          <p>{{ note.description }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+

@@ -34,7 +34,15 @@ module WritingPosts
   end
 end
 
-Jekyll::Hooks.register :documents, :post_read do |document|
-  WritingPosts.apply_defaults(document)
-end
+class WritingPostsGenerator < Jekyll::Generator
+  priority :highest
 
+  def generate(site)
+    collection = site.collections["writing"]
+    return if collection.nil?
+
+    collection.docs.each do |document|
+      WritingPosts.apply_defaults(document)
+    end
+  end
+end

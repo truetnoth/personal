@@ -46,7 +46,7 @@ end
 module WritingTagFilters
   def writing_tags(posts)
     Array(posts)
-      .flat_map { |post| Array(post.data["tags"]) }
+      .flat_map { |post| Array(post_value(post, "tags")) }
       .map(&:to_s)
       .map(&:strip)
       .reject(&:empty?)
@@ -56,7 +56,17 @@ module WritingTagFilters
 
   def where_writing_tag(posts, tag)
     Array(posts).select do |post|
-      Array(post.data["tags"]).map(&:to_s).include?(tag.to_s)
+      Array(post_value(post, "tags")).map(&:to_s).include?(tag.to_s)
+    end
+  end
+
+  private
+
+  def post_value(post, key)
+    if post.respond_to?(:[])
+      post[key]
+    elsif post.respond_to?(:data)
+      post.data[key]
     end
   end
 end

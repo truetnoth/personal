@@ -3,7 +3,10 @@ title: About
 permalink: /about/
 ---
 
-This is a personal site built from an Obsidian vault and published with Jekyll.
+Меня зовут Валера, я шеф-редактор в Т—Ж. 
 
-Update this page with your bio, projects, contacts, and links.
+Меня интересует все: от науки и философии до религии и политики.
+
+Мои соцсети:
+1. [Telegram](https://t.me/truetnoth)
 

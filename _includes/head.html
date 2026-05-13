@@ -1,7 +1,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<script>
+  (function() {
+    try {
+      var savedTheme = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var useDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+      if (useDark) {
+        document.documentElement.classList.add("theme-dark");
+      }
+
+      document.documentElement.style.colorScheme = useDark ? "dark" : "light";
+    } catch (error) {
+      document.documentElement.style.colorScheme = "light";
+    }
+  })();
+</script>
 {% seo %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <link rel="alternate" type="application/feed+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
-

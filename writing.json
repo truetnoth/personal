@@ -1,0 +1,14 @@
+---
+layout: null
+permalink: /writing.json
+---
+{% assign posts = site.writing | sort: "date" | reverse %}
+[
+{% for post in posts %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "date": {{ post.date | ru_date | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

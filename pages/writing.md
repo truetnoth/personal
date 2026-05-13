@@ -5,7 +5,7 @@ permalink: /writing/
 
 {% assign posts = site.writing | sort: "date" | reverse %}
 
-<ul class="index-list">
+<ul class="index-list" data-writing-list data-writing-endpoint="{{ '/writing.json' | relative_url }}">
 {% for post in posts %}
   <li>
     <a class="plain" href="{{ post.url | relative_url }}">

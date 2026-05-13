@@ -9,9 +9,11 @@ permalink: /writing/
 {% if tags.size > 0 %}
 ## Topics
 
+<p class="topic-list">
 {% for tag in tags %}
-[{{ tag }}](#{{ tag | slugify }}){% unless forloop.last %}, {% endunless %}
+  <a href="#{{ tag | slugify }}">{{ tag }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
 {% endfor %}
+</p>
 {% endif %}
 
 ## Writing

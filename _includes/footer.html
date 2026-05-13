@@ -1,4 +1,6 @@
 <footer class="site-footer">
-  <p>&copy; {{ "now" | date: "%Y" }} {{ site.title | escape }}</p>
+  <div class="footer-rule">
+    <p><a class="muted plain font-ui" href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
+    <p class="muted">Published from an Obsidian vault with Jekyll and GitHub Pages.</p>
+  </div>
 </footer>
-

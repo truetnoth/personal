@@ -2,45 +2,70 @@
 layout: default
 ---
 
-<section class="intro">
-  <p class="eyebrow">Personal site</p>
-  <h1>{{ site.title | escape }}</h1>
-  <p>{{ content | strip_html | strip }}</p>
-</section>
+<div class="home-wrap">
+  {% assign latest = site.posts | first %}
+  {% if latest %}
+    <p><a class="muted plain font-ui" href="{{ latest.url | relative_url }}">Latest</a></p>
 
-<section class="section">
-  <div class="section-heading">
-    <h2>Latest Posts</h2>
-    <a href="{{ '/archive/' | relative_url }}">All posts</a>
-  </div>
-  <div class="post-list">
-    {% for post in site.posts limit: 5 %}
-      <article class="list-item">
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-        <p class="meta">{{ post.date | date: "%Y-%m-%d" }}</p>
-        {% if post.description %}
-          <p>{{ post.description }}</p>
+    <article class="latest-entry">
+      <a class="plain" href="{{ latest.url | relative_url }}">
+        <h2>{{ latest.title | escape }}</h2>
+        <div class="metadata muted small font-ui">
+          <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%B %-d, %Y" }}</time>
+        </div>
+        {% if latest.description %}
+          <p class="small muted">{{ latest.description }} <span aria-hidden="true">Keep reading -></span></p>
         {% endif %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+      </a>
+    </article>
 
-<section class="section">
-  <div class="section-heading">
-    <h2>Notes</h2>
-    <a href="{{ '/notes/' | relative_url }}">All notes</a>
-  </div>
-  <div class="post-list">
-    {% assign notes = site.notes | sort: "title" %}
-    {% for note in notes limit: 5 %}
-      <article class="list-item">
-        <h3><a href="{{ note.url | relative_url }}">{{ note.title | default: note.name | escape }}</a></h3>
-        {% if note.description %}
-          <p>{{ note.description }}</p>
-        {% endif %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+    <hr class="section-rule">
+  {% endif %}
 
+  {% assign tags = site.tags | sort %}
+  {% if tags.size > 0 %}
+    <p><a class="muted plain font-ui" href="{{ '/archive/' | relative_url }}">Topics</a></p>
+    <p class="topic-list">
+      {% for tag in tags %}
+        <a href="{{ '/archive/' | relative_url }}#{{ tag[0] | slugify }}">{{ tag[0] }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
+      {% endfor %}
+    </p>
+
+    <hr class="section-rule">
+  {% endif %}
+
+  <p><a class="muted plain font-ui" href="{{ '/archive/' | relative_url }}">Writing</a></p>
+  <ul class="index-list">
+    {% for post in site.posts %}
+      <li>
+        <a class="plain" href="{{ post.url | relative_url }}">
+          <span class="index-date muted small font-ui">{{ post.date | date: "%Y · %m" }}</span>
+          <span class="index-title">{{ post.title | escape }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% assign notes = site.notes | sort: "title" %}
+  {% if notes.size > 0 %}
+    <hr class="section-rule">
+
+    <p><a class="muted plain font-ui" href="{{ '/notes/' | relative_url }}">Notes</a></p>
+    <ul class="index-list">
+      {% for note in notes %}
+        <li>
+          <a class="plain" href="{{ note.url | relative_url }}">
+            <span class="index-date muted small font-ui">note</span>
+            <span class="index-title">{{ note.title | default: note.name | escape }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% assign intro = content | strip_html | strip %}
+  {% if intro != "" %}
+    <hr class="section-rule">
+    <p class="muted">{{ intro }}</p>
+  {% endif %}
+</div>

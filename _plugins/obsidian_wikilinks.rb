@@ -7,8 +7,10 @@ module ObsidianWikilinks
 
   def convert(content, site)
     index = link_index(site)
+    protected_blocks = []
+    working_content = protect_code(content, protected_blocks)
 
-    content.gsub(WIKILINK_PATTERN) do
+    converted = working_content.gsub(WIKILINK_PATTERN) do
       embed = Regexp.last_match(1)
       raw_target = Regexp.last_match(2).strip
       target, label = raw_target.split("|", 2).map { |part| part&.strip }
@@ -24,6 +26,8 @@ module ObsidianWikilinks
         "[#{text}](#{url})"
       end
     end
+
+    restore_code(converted, protected_blocks)
   end
 
   def resolve_url(index, path, site)
@@ -55,6 +59,25 @@ module ObsidianWikilinks
   def slugify(value)
     Jekyll::Utils.slugify(value.to_s)
   end
+
+  def protect_code(content, protected_blocks)
+    content
+      .gsub(/```.*?```/m) { protect_match(Regexp.last_match(0), protected_blocks) }
+      .gsub(/`[^`\n]+`/) { protect_match(Regexp.last_match(0), protected_blocks) }
+  end
+
+  def protect_match(value, protected_blocks)
+    token = "%%OBSIDIAN_CODE_#{protected_blocks.length}%%"
+    protected_blocks << value
+    token
+  end
+
+  def restore_code(content, protected_blocks)
+    protected_blocks.each_with_index do |value, index|
+      content = content.gsub("%%OBSIDIAN_CODE_#{index}%%", value)
+    end
+    content
+  end
 end
 
 Jekyll::Hooks.register [:pages, :documents], :pre_render do |item|
@@ -62,4 +85,3 @@ Jekyll::Hooks.register [:pages, :documents], :pre_render do |item|
 
   item.content = ObsidianWikilinks.convert(item.content, item.site)
 end
-

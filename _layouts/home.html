@@ -7,22 +7,14 @@ layout: default
 
   {% assign tags = posts | writing_tags %}
   {% if tags.size > 0 %}
-    <p><a class="muted plain font-ui" href="{{ '/topics/' | relative_url }}">Темы</a></p>
+    <p class="home-label"><a class="plain" href="{{ '/topics/' | relative_url }}">Темы</a></p>
     <p class="topic-list">
       {% for tag in tags %}
         <a href="{{ tag | writing_tag_url | relative_url }}">{{ tag }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
       {% endfor %}
     </p>
-
-    <hr class="section-rule">
   {% endif %}
 
-  <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Пишу</a></p>
+  <p class="home-label home-section"><a class="plain" href="{{ '/writing/' | relative_url }}">Пишу</a></p>
   {% include post-list.html posts=posts %}
-
-  {% assign intro = content | strip_html | strip %}
-  {% if intro != "" %}
-    <hr class="section-rule">
-    <p class="muted">{{ intro }}</p>
-  {% endif %}
 </div>

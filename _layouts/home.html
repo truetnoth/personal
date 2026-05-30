@@ -3,11 +3,16 @@ layout: default
 ---
 
 <div class="home-wrap">
+  {% capture intro_text %}{{ content | strip_html | strip }}{% endcapture %}
+  {% if intro_text != "" %}
+    <div class="home-intro">{{ content }}</div>
+  {% endif %}
+
   {% assign posts = site.writing | sort: "date" | reverse %}
 
   {% assign tags = posts | writing_tags %}
   {% if tags.size > 0 %}
-    <p class="home-label"><a class="plain" href="{{ '/topics/' | relative_url }}">Темы</a></p>
+    <p class="home-label">Темы</p>
     <p class="topic-list">
       {% for tag in tags %}
         <a href="{{ tag | writing_tag_url | relative_url }}">{{ tag }}</a>{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
@@ -15,6 +20,6 @@ layout: default
     </p>
   {% endif %}
 
-  <p class="home-label home-section"><a class="plain" href="{{ '/writing/' | relative_url }}">Пишу</a></p>
+  <p class="home-label home-section">Пишу</p>
   {% include post-list.html posts=posts %}
 </div>

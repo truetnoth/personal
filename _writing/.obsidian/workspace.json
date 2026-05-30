@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "резюме.md",
+                "file": "История 2.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "резюме"
+              "title": "История 2"
+            }
+          },
+          {
+            "id": "214c4fb016736753",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Посадка.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "Посадка"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,10 +198,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "2cd1b1af02aa6692",
+  "active": "214c4fb016736753",
   "lastOpenFiles": [
-    "Заголовок.md",
+    "История 1.md",
+    "Посадка.md",
+    "История 2.md",
     "резюме.md",
+    "История 1 1.md",
+    "Заголовок.md",
     "Немного философии.md",
     "welcome.md",
     "bez-huyni.md",

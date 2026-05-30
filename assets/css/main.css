@@ -5,8 +5,8 @@
   --faint: #9f9d96;
   --line: #e4e0d8;
   --panel: #f7f7f5;
-  --accent: #0f6b5f;
-  --accent-strong: #0a4a43;
+  --accent: #FA7268;
+  --accent-strong: #f66055;
   --code-bg: #f1f3f4;
   --wrap: 37em;
   --wrap-wide: 54em;
@@ -19,8 +19,8 @@
   --faint: #6f6e69;
   --line: #37342d;
   --panel: #20211d;
-  --accent: #6fd5c7;
-  --accent-strong: #a4eee4;
+  --accent: #FA7268;
+  --accent-strong: #f66055;
   --code-bg: #2b2a25;
 }
 
@@ -116,8 +116,7 @@ a.muted:hover {
 .site-main,
 .home-wrap,
 .page,
-.post,
-.note {
+.post {
   width: min(100%, var(--wrap));
   margin: 0 auto;
 }
@@ -160,36 +159,19 @@ a.muted:hover {
   border-radius: 50%;
   background: currentColor;
   transition: left 120ms ease, background-color 120ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.theme-toggle-switch::before,
-.theme-toggle-switch::after {
-  position: absolute;
-  content: "";
-  display: block;
+.toggle-icon {
+  flex-shrink: 0;
+  color: var(--bg);
 }
 
-.theme-toggle-switch::before {
-  inset: 4px;
-  border-radius: 50%;
-  background: var(--bg);
-}
-
-.theme-toggle-switch::after {
-  top: 3px;
-  left: 8px;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: var(--bg);
-  box-shadow:
-    0 10px 0 var(--bg),
-    5px 5px 0 var(--bg),
-    -5px 5px 0 var(--bg),
-    3px 1px 0 var(--bg),
-    -3px 1px 0 var(--bg),
-    3px 9px 0 var(--bg),
-    -3px 9px 0 var(--bg);
+.toggle-moon {
+  display: none;
 }
 
 .theme-toggle:hover .theme-toggle-switch {
@@ -201,13 +183,12 @@ a.muted:hover {
   background: var(--text);
 }
 
-:root.theme-dark .theme-toggle-switch::before {
-  inset: 2px 2px 2px 7px;
-  background: var(--bg);
+:root.theme-dark .toggle-sun {
+  display: none;
 }
 
-:root.theme-dark .theme-toggle-switch::after {
-  display: none;
+:root.theme-dark .toggle-moon {
+  display: block;
 }
 
 p {
@@ -241,13 +222,6 @@ h3 {
   font-weight: 600;
 }
 
-.latest-entry h2 {
-  margin-top: 0;
-}
-
-.metadata {
-  margin-bottom: 0.85rem;
-}
 
 .section-rule {
   width: 100%;

@@ -10,15 +10,6 @@ layout: default
     {% assign count = page.topic_posts | size %}
     <p class="meta">{{ count }} {% if count == 1 %}пост{% elsif count > 1 and count < 5 %}поста{% else %}постов{% endif %} по этой теме</p>
 
-    <ul class="index-list">
-    {% for post in page.topic_posts %}
-      <li>
-        <a class="plain" href="{{ post.url | relative_url }}">
-          <span class="index-date muted small font-ui">{{ post.date | ru_date }}</span>
-          <span class="index-title">{{ post.title | escape }}</span>
-        </a>
-      </li>
-    {% endfor %}
-    </ul>
+    {% include post-list.html posts=page.topic_posts %}
   </div>
 </article>

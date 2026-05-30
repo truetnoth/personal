@@ -18,16 +18,7 @@ layout: default
   {% endif %}
 
   <p><a class="muted plain font-ui" href="{{ '/writing/' | relative_url }}">Пишу</a></p>
-  <ul class="index-list">
-    {% for post in posts %}
-      <li>
-        <a class="plain" href="{{ post.url | relative_url }}">
-          <span class="index-date muted small font-ui">{{ post.date | ru_date }}</span>
-          <span class="index-title">{{ post.title | escape }}</span>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+  {% include post-list.html posts=posts %}
 
   {% assign intro = content | strip_html | strip %}
   {% if intro != "" %}

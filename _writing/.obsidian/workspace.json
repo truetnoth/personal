@@ -15,7 +15,7 @@
               "state": {
                 "file": "резюме.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "резюме"
@@ -185,11 +185,11 @@
   },
   "active": "2cd1b1af02aa6692",
   "lastOpenFiles": [
-    "Немного философии.md",
+    "Заголовок.md",
     "резюме.md",
-    "Clippings",
-    "bez-huyni.md",
+    "Немного философии.md",
     "welcome.md",
-    "Заголовок.md"
+    "bez-huyni.md",
+    "Clippings"
   ]
 }
